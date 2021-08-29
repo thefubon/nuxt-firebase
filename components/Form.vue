@@ -43,7 +43,7 @@
           v-if="$v.form.LastName.$dirty && !$v.form.LastName.minLength"
           class="invalid-feedback text-xs"
         >
-          There must be more than 10 characters!
+          There must be more than 5 characters!
         </p>
       </div>
 
