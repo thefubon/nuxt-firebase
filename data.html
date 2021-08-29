@@ -1,0 +1,93 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container mx-auto my-16">
+        <h3 class="text-2xl font-bold mb-4">Registered Users</h3>
+        <div v-if="loading" class="spinner-border" style="width: 2rem; height: 2rem" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <table v-else class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Code</th>
+              <th>Phone</th>
+              <th>Country</th>
+              <th>Email</th>
+              <th>Gendere</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in items" :key="index">
+              <td>{{ index + 1 }}</td>
+              <td>{{ item.firstName }}</td>
+              <td>{{ item.LastName }}</td>
+              <td>{{ item.code }}</td>
+              <td>{{ item.phone }}</td>
+              <td>{{ item.country }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.gendere }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0-beta.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0-beta.7/firebase-firestore-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script type="module">
+      const firebaseConfig = {
+        apiKey: "AIzaSyDHOcsA09ivVuUtw0gip_Nop5qM80X5Uds",
+        authDomain: "nuxttest-4aa01.firebaseapp.com",
+        projectId: "nuxttest-4aa01",
+        storageBucket: "nuxttest-4aa01.appspot.com",
+        messagingSenderId: "384832752988",
+        appId: "1:384832752988:web:ab26c175ea05cd8a4b0599",
+      }
+
+      // Initialize Firebase
+      const firebaseApp = firebase.initializeApp(firebaseConfig)
+
+      const db = firebaseApp.firestore()
+
+      var app = new Vue({
+        el: "#app",
+        data: () => ({
+          items: [],
+          loading: false,
+        }),
+        mounted() {
+          this.setInitialize()
+        },
+        methods: {
+          async setInitialize() {
+            try {
+              this.loading = true
+              const collection = await db.collection("users")
+              const users = await collection.get()
+              users.forEach((x) => this.items.push(x.data()))
+              this.loading = false
+            } catch (e) {
+              console.log(e)
+              this.loading = false
+            }
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

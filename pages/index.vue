@@ -1,7 +1,6 @@
 <template>
   <div>
     <Form />
-    <!-- <FormData /> -->
   </div>
 </template>
 
