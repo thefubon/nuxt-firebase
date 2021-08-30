@@ -1,6 +1,7 @@
 <template>
-  <div class="container mx-auto my-16">
+  <div class="p-4">
     <h3 class="text-2xl font-bold mb-4">Registered Users</h3>
+
     <div
       v-if="loading"
       class="spinner-border"
@@ -9,27 +10,27 @@
     >
       <span class="visually-hidden">Loading...</span>
     </div>
-    <table v-else class="table table-hover  table-striped">
+    <table v-else class="table table-hover table-striped">
       <thead>
-        <tr>
+        <tr class="divide-x divide-gray-400">
           <th>№</th>
-          <th>First Name</th>
-          <th>Last Name</th>
+          <th>First</th>
+          <th>Last</th>
           <th>Code</th>
           <th>Phone</th>
           <th>Country</th>
           <th>Email</th>
           <th>Gendere</th>
           <th>Date</th>
-          <th>utmSource</th>
-          <th>utmMedium</th>
-          <th>utmTerm</th>
-          <th>utmContent</th>
-          <th>utmCampaign</th>
+          <th>Source</th>
+          <th>Medium</th>
+          <th>Term</th>
+          <th>Content</th>
+          <th>Campaign</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in itemsSorted" :key="index">
+        <tr v-for="(item, index) in itemsSorted" :key="index" class="divide-x divide-y divide-gray-400">
           <td>{{ itemsSorted.length - index }}</td>
           <td>{{ item.firstName }}</td>
           <td>{{ item.LastName }}</td>
@@ -140,3 +141,19 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  table {
+    @apply w-full text-sm border border-gray-400;
+  }
+  table td {
+    @apply p-1;
+  }
+
+  thead {
+    @apply bg-gray-200;
+  }
+  thead th {
+    @apply text-left font-medium px-1;
+  }
+</style>
