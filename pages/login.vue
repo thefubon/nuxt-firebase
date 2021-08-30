@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto max-w-md my-16">
+  <div class="container mx-auto max-w-md px-4">
     <form @submit.prevent="login">
       <div class="my-3">
         <legend class="text-sm">Email</legend>
