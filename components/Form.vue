@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto max-w-md my-16">
+  <div class="container mx-auto max-w-md">
     <form v-if="!registrationPassed" @submit.prevent="checkForm">
       <div class="my-3">
         <legend class="text-sm">First Name</legend>
@@ -150,7 +150,7 @@
         </select>
       </div>
 
-      <div class="my-3">
+      <div class="my-6">
         <div class="flex items-center space-x-2">
           <input
             id="checkbox"
@@ -179,21 +179,18 @@
 
       <input name="date" type="hidden" id="dataReg" />
 
-      <div class="my-3">
-        <button
-          class="my-3 px-4 py-3 bg-indigo-500 text-white rounded d-flex align-items-center"
-          type="submit"
-          :disabled="loading"
-        >
-          <span class="me-2">Registration</span>
+      <div class="my-6">
+        <button type="submit" :disabled="loading" class="visually-hidden inline-flex items-center px-4 py-3 bg-indigo-500 text-white rounded d-flex align-items-center">
           <div
             v-if="loading"
-            class="spinner-border"
-            style="width: 1rem; height: 1rem"
             role="status"
           >
-            <span class="visually-hidden">Loading...</span>
+            <svg class="visually-hidden Registration animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
           </div>
+          Registration
         </button>
       </div>
     </form>
