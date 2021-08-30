@@ -230,15 +230,15 @@ export default {
       },
       countries: [
         {
-          label: "Россия",
+          label: "Russia",
           value: "Russia"
         },
         {
-          label: "Украина",
+          label: "Ukraine",
           value: "Ukraine"
         },
         {
-          label: "США",
+          label: "USA",
           value: "USA"
         }
       ]
@@ -246,8 +246,8 @@ export default {
   },
   validations: {
     form: {
-      firstName: { required, minLength: minLength(5) },
-      LastName: { required, minLength: minLength(5) },
+      firstName: { required, minLength: minLength(3) },
+      LastName: { required, minLength: minLength(3) },
       code: { required },
       phone: { required },
       email: { required, email },
