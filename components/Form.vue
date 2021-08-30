@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto max-w-md">
+  <div class="container mx-auto max-w-md px-4">
     <form v-if="!registrationPassed" @submit.prevent="checkForm">
       <div class="my-3">
         <legend class="text-sm">First Name</legend>
