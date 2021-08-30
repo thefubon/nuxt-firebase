@@ -118,7 +118,7 @@
             id="male"
             v-model="form.gendere"
           />
-          <label for="male">Man</label>
+          <label for="male">Male</label>
         </div>
         <div class="flex items-center space-x-2">
           <input
@@ -129,7 +129,7 @@
             id="female"
             v-model="form.gendere"
           />
-          <label for="female">Woman</label>
+          <label for="female">Female</label>
         </div>
       </div>
 
