@@ -8,6 +8,16 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <nuxt-link
+                  class="nav-link text-indigo-500 font-bold"
+                  :class="{ active: this.$route.path === '/?utm_source=website_com&utm_medium=news&utm_term=name_conference&utm_content=article&utm_campaign=moscow' }"
+                  exact
+                  aria-current="page"
+                  to="/?utm_source=website_com&utm_medium=news&utm_term=name_conference&utm_content=article&utm_campaign=moscow"
+                  >UTM Link</nuxt-link
+                >
+              </li>
+              <li class="nav-item">
+                <nuxt-link
                   class="nav-link"
                   :class="{ active: this.$route.path === '/' }"
                   exact

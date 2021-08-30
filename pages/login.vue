@@ -9,6 +9,7 @@
           class="form-input px-4 py-3 rounded w-full"
           :class="$v.form.email.$error ? 'is-invalid' : ''"
           type="email"
+          placeholder="user@test.com"
         />
         <p
           v-if="$v.form.email.$dirty && !$v.form.email.required"
@@ -32,6 +33,7 @@
           class="form-input px-4 py-3 rounded w-full"
           :class="$v.form.password.$error ? 'is-invalid' : ''"
           type="password"
+          placeholder="123456"
         />
         <p
           v-if="$v.form.password.$dirty && !$v.form.password.required"
