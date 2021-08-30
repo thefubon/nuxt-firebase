@@ -20,7 +20,7 @@
           v-if="$v.form.firstName.$dirty && !$v.form.firstName.minLength"
           class="invalid-feedback text-xs"
         >
-          There must be more than 5 characters!
+          There must be more than 3 characters!
         </p>
       </div>
 
@@ -43,7 +43,7 @@
           v-if="$v.form.LastName.$dirty && !$v.form.LastName.minLength"
           class="invalid-feedback text-xs"
         >
-          There must be more than 5 characters!
+          There must be more than 3 characters!
         </p>
       </div>
 
