@@ -13,7 +13,7 @@
     <table v-else class="table table-hover table-striped">
       <thead>
         <tr class="divide-x divide-gray-400">
-          <th>№</th>
+          <th>Id</th>
           <th>First</th>
           <th>Last</th>
           <th>Code</th>
