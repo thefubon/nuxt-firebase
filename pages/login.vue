@@ -1,61 +1,63 @@
 <template>
-  <div class="container mx-auto max-w-md px-4">
-    <form @submit.prevent="login">
-      <div class="my-3">
-        <legend class="text-sm">Email</legend>
-        <input
-          id="email"
-          v-model.trim="form.email"
-          class="form-input px-4 py-3 rounded w-full"
-          :class="$v.form.email.$error ? 'is-invalid' : ''"
-          type="email"
-          placeholder="user@test.com"
-        />
-        <p
-          v-if="$v.form.email.$dirty && !$v.form.email.required"
-          class="invalid-feedback text-xs"
-        >
-          Required field!
-        </p>
-        <p
-          v-if="$v.form.email.$dirty && !$v.form.email.email"
-          class="invalid-feedback text-xs"
-        >
-          Email is incorrect
-        </p>
-      </div>
+  <client-only>
+    <div class="container mx-auto max-w-md px-4">
+      <form @submit.prevent="login">
+        <div class="my-3">
+          <legend class="text-sm">Email</legend>
+          <input
+            id="email"
+            v-model.trim="form.email"
+            class="form-input px-4 py-3 rounded w-full"
+            :class="$v.form.email.$error ? 'is-invalid' : ''"
+            type="email"
+            placeholder="user@test.com"
+          />
+          <p
+            v-if="$v.form.email.$dirty && !$v.form.email.required"
+            class="invalid-feedback text-xs"
+          >
+            Required field!
+          </p>
+          <p
+            v-if="$v.form.email.$dirty && !$v.form.email.email"
+            class="invalid-feedback text-xs"
+          >
+            Email is incorrect
+          </p>
+        </div>
 
-      <div class="my-3">
-        <legend class="text-sm">Password</legend>
-        <input
-          id="LastName"
-          v-model.trim="form.password"
-          class="form-input px-4 py-3 rounded w-full"
-          :class="$v.form.password.$error ? 'is-invalid' : ''"
-          type="password"
-          placeholder="123456"
-        />
-        <p
-          v-if="$v.form.password.$dirty && !$v.form.password.required"
-          class="invalid-feedback text-xs"
-        >
-          Required field!
-        </p>
-      </div>
+        <div class="my-3">
+          <legend class="text-sm">Password</legend>
+          <input
+            id="LastName"
+            v-model.trim="form.password"
+            class="form-input px-4 py-3 rounded w-full"
+            :class="$v.form.password.$error ? 'is-invalid' : ''"
+            type="password"
+            placeholder="123456"
+          />
+          <p
+            v-if="$v.form.password.$dirty && !$v.form.password.required"
+            class="invalid-feedback text-xs"
+          >
+            Required field!
+          </p>
+        </div>
 
-      <p v-if="error" class="invalid-feedback">{{ error }}</p>
+        <p v-if="error" class="invalid-feedback">{{ error }}</p>
 
-      <div class="my-3">
-        <button
-          class="my-3 px-4 py-3 bg-indigo-500 text-white rounded d-flex align-items-center"
-          type="submit"
-          :disabled="loading"
-        >
-          <span class="me-2">Login</span>
-        </button>
-      </div>
-    </form>
-  </div>
+        <div class="my-3">
+          <button
+            class="my-3 px-4 py-3 bg-indigo-500 text-white rounded d-flex align-items-center"
+            type="submit"
+            :disabled="loading"
+          >
+            <span class="me-2">Login</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </client-only>
 </template>
 
 <script>
@@ -71,8 +73,10 @@ export default {
       loading: false,
       error: null,
       form: {
-        email: null,
-        password: null
+        email: "user@test.com",
+        // email: null,
+        password: 123456
+        // password: null
       }
     };
   },
