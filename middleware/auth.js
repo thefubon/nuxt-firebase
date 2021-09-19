@@ -8,7 +8,6 @@ export default async ({ store, redirect }) => {
     const auth = getAuth();
     onAuthStateChanged(auth, user => {
       const { isAuth } = store?.state?.auth;
-      console.log("auth", isAuth, user);
       if (!user) {
         if (isAuth !== false) {
           store.commit(`auth/${SET_AUTH}`, false, { root: true });

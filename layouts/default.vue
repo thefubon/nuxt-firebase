@@ -93,7 +93,6 @@ export default {
       const auth = getAuth();
       signOut(auth).then(() => {
         this.$store.commit(`auth/${SET_AUTH}`, false, { root: true });
-        console.log("signout");
         this.$router.push("/login");
       });
     }

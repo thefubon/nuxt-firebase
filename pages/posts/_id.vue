@@ -209,7 +209,6 @@ export default {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
         const { title, description, body } = docSnap.data();
         this.title = title;
         this.description = description;
@@ -241,7 +240,7 @@ export default {
     async saveForm() {
       this.$v.$touch();
       if (!this.$v.$error) {
-        this.body.forEach(item => console.log(item.value));
+        // this.body.forEach(item => console.log(item.value));
         try {
           this.loading = true;
           let request = {

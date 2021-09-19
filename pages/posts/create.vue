@@ -231,7 +231,7 @@ export default {
     async saveForm() {
       this.$v.$touch();
       if (!this.$v.$error) {
-        this.body.forEach(item => console.log(item.value));
+        // this.body.forEach(item => console.log(item.value));
         try {
           this.loading = true;
           let request = {

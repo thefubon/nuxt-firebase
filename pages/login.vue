@@ -95,7 +95,7 @@ export default {
           const auth = getAuth();
           signInWithEmailAndPassword(auth, this.form.email, this.form.password)
             .then(async userCredential => {
-              console.log("user signed in");
+              // console.log("user signed in");
               this.loading = false;
               this.$router.push("/data");
             })
