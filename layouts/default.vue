@@ -9,7 +9,11 @@
               <li class="nav-item">
                 <nuxt-link
                   class="nav-link text-indigo-500 font-bold"
-                  :class="{ active: this.$route.path === '/?utm_source=website_com&utm_medium=news&utm_term=name_conference&utm_content=article&utm_campaign=moscow' }"
+                  :class="{
+                    active:
+                      this.$route.path ===
+                      '/?utm_source=website_com&utm_medium=news&utm_term=name_conference&utm_content=article&utm_campaign=moscow'
+                  }"
                   exact
                   aria-current="page"
                   to="/?utm_source=website_com&utm_medium=news&utm_term=name_conference&utm_content=article&utm_campaign=moscow"
@@ -36,6 +40,16 @@
                   >Data</nuxt-link
                 >
               </li>
+              <li class="nav-item" v-if="isAuth">
+                <nuxt-link
+                  class="nav-link"
+                  :class="{ active: this.$route.path === '/posts' }"
+                  exact
+                  aria-current="page"
+                  to="/posts"
+                  >Posts</nuxt-link
+                >
+              </li>
               <li class="nav-item" v-if="!isAuth">
                 <nuxt-link
                   class="nav-link"
@@ -60,32 +74,39 @@
 
 <script>
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { mapState } from "vuex";
+import { SET_AUTH } from "~/store/types";
 export default {
   data: () => ({
-    isAuth: false
+    // isAuth: false
   }),
+  computed: {
+    ...mapState({
+      isAuth: state => state?.auth?.isAuth
+    })
+  },
   mounted() {
-    this.checkAuth();
+    // this.checkAuth();
   },
   methods: {
     logout() {
       const auth = getAuth();
       signOut(auth).then(() => {
-        console.log("signout");
+        this.$store.commit(`auth/${SET_AUTH}`, false, { root: true });
         this.$router.push("/login");
       });
-    },
-    checkAuth() {
-      const auth = getAuth();
-      onAuthStateChanged(auth, user => {
-        console.log("onAuthStateChanged", user);
-        if (user) {
-          this.isAuth = true;
-        } else {
-          this.isAuth = false;
-        }
-      });
     }
+    // checkAuth() {
+    //   const auth = getAuth();
+    //   onAuthStateChanged(auth, user => {
+    //     console.log("onAuthStateChanged", user);
+    //     if (user) {
+    //       this.isAuth = true;
+    //     } else {
+    //       this.isAuth = false;
+    //     }
+    //   });
+    // }
   }
 };
 </script>
