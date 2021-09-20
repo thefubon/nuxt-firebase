@@ -36,7 +36,7 @@
         </thead>
         <tbody class="bg-blue-200 lg:text-black">
           <tr v-for="(item, index) in posts" :key="item.id">
-            <td class="p-3">{{ index + 1 }}</td>
+            <td class="p-3">{{ posts.length - index }}</td>
             <td class="p-3">{{ item.title }}</td>
             <td class="p-3">{{ item.description }}</td>
             <td class="p-3">{{ item.categoryName }}</td>
@@ -98,7 +98,14 @@
 
 <script>
 import { db } from "~/plugins/firebase";
-import { getDocs, collection, doc, deleteDoc } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  doc,
+  deleteDoc,
+  orderBy,
+  query
+} from "firebase/firestore";
 import { format } from "date-fns";
 export default {
   name: "IndexPostPage",
@@ -108,7 +115,8 @@ export default {
     loading: false
   }),
   mounted() {
-    this.getPosts();
+    // this.getPosts();
+    this.getPostsQuery();
   },
   methods: {
     async removePost(id) {
@@ -117,6 +125,31 @@ export default {
         await this.getPosts();
       } catch (e) {
         console.log(e);
+      }
+    },
+    async getPostsQuery() {
+      try {
+        this.loading = true;
+        this.posts = [];
+        // Query the first page of docs
+        const postsQuery = query(
+          collection(db, "posts"),
+          orderBy("date", "desc")
+        );
+        const postsSnapshots = await getDocs(postsQuery);
+        postsSnapshots.forEach(post => {
+          const data = post.data();
+          this.posts.push({
+            id: post.id,
+            categoryName: data?.category?.name,
+            dateStr: format(new Date(parseInt(data.date)), "dd.MM.yy HH:mm"),
+            ...data
+          });
+        });
+        this.loading = false;
+      } catch (e) {
+        console.log(e);
+        this.loading = false;
       }
     },
     async getPosts() {
@@ -129,7 +162,7 @@ export default {
           this.posts.push({
             id: post.id,
             categoryName: data?.category?.name,
-            dateStr: format(new Date(parseInt(data.date)), "dd.MM.yy"),
+            dateStr: format(new Date(parseInt(data.date)), "dd.MM.yy HH:mm"),
             ...data
           });
         });

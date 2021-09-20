@@ -91,6 +91,7 @@ export default {
           getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
             // this.image = downloadURL;
             this.settings.value = downloadURL;
+            this.$forceUpdate();
             // this.emitChanges();
           });
         }
@@ -105,7 +106,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 300px;
+  min-height: 170px;
   border: 1px dashed black;
   border-radius: 8px;
   padding: 8px;
