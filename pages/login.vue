@@ -73,10 +73,10 @@ export default {
       loading: false,
       error: null,
       form: {
-        email: "user@test.com",
-        // email: null,
-        password: 123456
-        // password: null
+        // email: "user@test.com",
+        email: null,
+        // password: 123456
+        password: null
       }
     };
   },
