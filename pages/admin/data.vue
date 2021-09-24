@@ -112,48 +112,11 @@ export default {
     }
   },
   methods: {
-    // checkAuth() {
-    //   const auth = getAuth();
-    //   onAuthStateChanged(auth, user => {
-    //     if (!user) {
-    //       this.$router.push("/login");
-    //     }
-    //   });
-    // },
-
-    // authbtn() {
-    //   const auth = getAuth();
-    //   signInWithEmailAndPassword(auth, "test@test.com", "123456")
-    //     .then(async userCredential => {
-    //       // Signed in
-    //       const user = userCredential.user;
-    //       console.log("accessToken", user.accessToken);
-    //       console.log("uid", user.uid);
-    //       const idToken = await user.getIdToken();
-    //       console.log(idToken);
-
-    //       onAuthStateChanged(auth, user => {
-    //         console.log("user", user);
-    //       });
-
-    //       // ...
-    //     })
-    //     .catch(error => {
-    //       const errorCode = error.code;
-    //       const errorMessage = error.message;
-    //       // ..
-    //     });
-    // },
     formatDate(date) {
       return format(new Date(parseInt(date)), "dd.MM.yy HH:mm");
     },
     async setInitialize() {
       try {
-        // this.checkAuth();
-        // const auth = getAuth();
-        // onAuthStateChanged(auth, user => {
-        //   console.log("user", user);
-        // });
         this.loading = true;
         const docs = await getDocs(collection(db, "users"));
         docs.forEach(doc => {

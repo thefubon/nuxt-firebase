@@ -97,7 +97,7 @@ export default {
             .then(async userCredential => {
               // console.log("user signed in");
               this.loading = false;
-              this.$router.push("/data");
+              this.$router.push("/admin/data");
             })
             .catch(error => {
               this.loading = false;

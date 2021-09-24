@@ -105,7 +105,7 @@
           <button
             class="mr-2  py-2 px-4 bg-gray-200  text-white font-semibold rounded-lg shadow-sm hover:bg-gray-300  focus:outline-none "
             type="button"
-            @click.prevent="$router.push('/posts')"
+            @click.prevent="$router.push('/admin/posts')"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +243,7 @@ export default {
           };
           await setDoc(doc(db, "posts", Date.now().toString()), request);
           this.loading = false;
-          this.$router.push("/posts");
+          this.$router.push("/admin/posts");
         } catch (e) {
           this.loading = false;
           console.log(e);

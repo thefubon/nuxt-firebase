@@ -36,7 +36,7 @@
                   :class="{ active: this.$route.path === '/data' }"
                   exact
                   aria-current="page"
-                  to="/data"
+                  to="/admin/data"
                   >Data</nuxt-link
                 >
               </li>
@@ -46,7 +46,7 @@
                   :class="{ active: this.$route.path === '/posts' }"
                   exact
                   aria-current="page"
-                  to="/posts"
+                  to="/admin/posts"
                   >Posts</nuxt-link
                 >
               </li>
