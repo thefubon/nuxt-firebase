@@ -8,6 +8,7 @@
       />
     </div>
     <button
+      v-if="edit"
       @click="$emit('remove', { settings })"
       class="py-2 mt-6 self-start ml-2 px-2 bg-red-500 text-white font-semibold rounded-lg shadow-sm hover:bg-red-700 focus:outline-none "
     >
@@ -32,6 +33,14 @@
 <script>
 export default {
   name: "SingleTextArea",
-  props: ["settings"]
+  props: {
+    settings: {
+      type: Object
+    },
+    edit: {
+      type: Boolean,
+      default: true
+    }
+  }
 };
 </script>

@@ -60,6 +60,16 @@
                   >Login</nuxt-link
                 >
               </li>
+              <li class="nav-item" v-if="!isAuth">
+                <nuxt-link
+                  class="nav-link"
+                  :class="{ active: this.$route.path === '/posts' }"
+                  exact
+                  aria-current="page"
+                  to="/posts"
+                  >Public Posts</nuxt-link
+                >
+              </li>
               <li class="nav-item" v-if="isAuth">
                 <a href="#" class="nav-link" @click.prevent="logout">LogOut</a>
               </li>

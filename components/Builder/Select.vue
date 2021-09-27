@@ -31,6 +31,7 @@
           </div>
         </div>
         <button
+          v-if="edit"
           @click="$emit('remove', { settings })"
           class="py-2 self-end ml-2 px-2 bg-red-500 text-white font-semibold rounded-lg shadow-sm hover:bg-red-700 focus:outline-none "
         >
@@ -51,7 +52,7 @@
         </button>
       </div>
     </div>
-    <div class="w-full">
+    <div class="w-full" v-if="edit">
       <button class="w-full" v-if="!showOptions" @click="showOptions = true">
         Show options
       </button>
@@ -119,7 +120,15 @@
 <script>
 export default {
   name: "SingleSelect",
-  props: ["settings"],
+  props: {
+    settings: {
+      type: Object
+    },
+    edit: {
+      type: Boolean,
+      default: true
+    }
+  },
   data: () => ({
     showOptions: false,
     newOption: null

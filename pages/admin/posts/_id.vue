@@ -255,7 +255,7 @@ export default {
           };
           await setDoc(doc(db, "posts", this.postId), request);
           this.loading = false;
-          this.$router.push("/posts");
+          this.$router.push("/admin/posts");
         } catch (e) {
           this.loading = false;
           console.log(e);
